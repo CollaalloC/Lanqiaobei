@@ -32,7 +32,7 @@
 */
 
 #include <iostream>
-use namespace std;
+using namespace std;
 
 /*错误路线
 int main()
