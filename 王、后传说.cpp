@@ -40,14 +40,16 @@ void queen(int index) //index为列
         if(hashTable[x] == false) //行是否占据
         {
             bool flag = true; //冲突判定
-            if((x >= k_x -1 && x <= k_x + 1)||(index >= k_y -1 && index <= k_y +1)) //王的范围判定
+            if((x >= k_x -1 && x <= k_x + 1)&&(index >= k_y -1 && index <= k_y +1)) //王的范围判定
+            //需要都用 && ，将范围限定在王的九宫格内
             {
                 flag = false;
-                break;
+                continue;//break直接跳出循环
             }
             for(int pre = 1; pre < index ; pre++)
             {
-                if(abs(pre-index)==(x - P[index]))//皇后对角线判定
+                if(abs(pre-index)==abs(x - P[pre]))//皇后对角线判定
+                //少了abs函数，括号内是P[pre]，上一个皇后的行号
                 {
                     flag = false;
                     break;
